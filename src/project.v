@@ -16,8 +16,20 @@ module tt_um_example (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-  // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
+  // Wires for intermediate results
+  wire [3:0] m = ui_in[3:0];
+  wire [3:0] q = uio_in[3:0];
+  wire [7:0] p;
+
+  // Instantiate the array multiplier
+  array_mult_structural mult_inst (
+    .m(m),
+    .q(q),
+    .p(p)
+  );
+
+  // Assign output pins
+  assign uo_out  = p;       // Output product result
   assign uio_out = 0;
   assign uio_oe  = 0;
 

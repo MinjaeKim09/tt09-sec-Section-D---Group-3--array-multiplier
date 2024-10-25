@@ -1,21 +1,19 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+  title:        "4-Bit Array Multiplier"      # Project title
+  author:       "Minjae Kim"                   # Your name
+  discord:      "Nvintel#7774"            # Your discord username, optional
+  description:  "Performs a 4-bit by 4-bit multiplication using structural Verilog"  # One line description of project
+  language:     "Verilog"                     # Language used
+  clock_hz:     0                             # Clock frequency (0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "1x1"                                # Tile size
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_example"
 
   # List your project's source files here.
-  # Source files must be in ./src and you must list each source file separately, one per line.
-  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "project.v"
     - "array_mult_structural.v"
@@ -23,30 +21,30 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
+  ui[0]: "Multiplier Bit 0"
+  ui[1]: "Multiplier Bit 1"
+  ui[2]: "Multiplier Bit 2"
+  ui[3]: "Multiplier Bit 3"
   ui[4]: ""
   ui[5]: ""
   ui[6]: ""
   ui[7]: ""
 
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  uo[0]: "Product Bit 0"
+  uo[1]: "Product Bit 1"
+  uo[2]: "Product Bit 2"
+  uo[3]: "Product Bit 3"
+  uo[4]: "Product Bit 4"
+  uo[5]: "Product Bit 5"
+  uo[6]: "Product Bit 6"
+  uo[7]: "Product Bit 7"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
+  uio[0]: "Multiplicand Bit 0"
+  uio[1]: "Multiplicand Bit 1"
+  uio[2]: "Multiplicand Bit 2"
+  uio[3]: "Multiplicand Bit 3"
   uio[4]: ""
   uio[5]: ""
   uio[6]: ""

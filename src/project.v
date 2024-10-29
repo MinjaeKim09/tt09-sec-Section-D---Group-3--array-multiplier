@@ -18,7 +18,7 @@ module tt_um_array_mult_structural (
 
   // 4-bit inputs for multiplication
   wire [3:0] m = ui_in[3:0];
-  wire [3:0] q = uio_in[3:0];
+  wire [3:0] q = uio_in[7:4];
 
   // Partial products
   wire pp0_0 = m[0] & q[0];

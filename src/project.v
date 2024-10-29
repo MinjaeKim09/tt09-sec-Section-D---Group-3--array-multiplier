@@ -17,8 +17,8 @@ module tt_um_array_mult_structural (
 );
 
   // 4-bit inputs for multiplication
-  wire [3:0] m = ui_in[3:0];
-  wire [3:0] q = ui_in[7:4];
+  wire [3:0] m = ui_in[7:4];
+  wire [3:0] q = ui_in[3:0];
   wire [7:0] p;
 
   wire [3:0] carry_adders_1;
@@ -29,24 +29,24 @@ module tt_um_array_mult_structural (
 	
   // Partial products
   wire pp0_0 = m[0] & q[0];
-  wire pp0_1 = m[0] & q[1];
-  wire pp0_2 = m[0] & q[2];
-  wire pp0_3 = m[0] & q[3];
+	wire pp0_1 = m[1] & q[0];
+	wire pp0_2 = m[2] & q[0];
+	wire pp0_3 = m[3] & q[0];
   
-  wire pp1_0 = m[1] & q[0];
-  wire pp1_1 = m[1] & q[1];
-  wire pp1_2 = m[1] & q[2];
-  wire pp1_3 = m[1] & q[3];
+	wire pp1_0 = m[0] & q[1];
+	wire pp1_1 = m[1] & q[1];
+	wire pp1_2 = m[2] & q[1];
+	wire pp1_3 = m[3] & q[1];
   
-  wire pp2_0 = m[2] & q[0];
-  wire pp2_1 = m[2] & q[1];
-  wire pp2_2 = m[2] & q[2];
-  wire pp2_3 = m[2] & q[3];
+	wire pp2_0 = m[0] & q[2];
+	wire pp2_1 = m[1] & q[2];
+	wire pp2_2 = m[2] & q[2];
+	wire pp2_3 = m[3] & q[2];
   
-  wire pp3_0 = m[3] & q[0];
-  wire pp3_1 = m[3] & q[1];
-  wire pp3_2 = m[3] & q[2];
-  wire pp3_3 = m[3] & q[3];
+	wire pp3_0 = m[0] & q[3];
+	wire pp3_1 = m[1] & q[3];
+	wire pp3_2 = m[2] & q[3];
+	wire pp3_3 = m[3] & q[3];
 
   full_adder fa0 (.a(pp0_1), .b(pp0_0), .cin(1'b0), .sum(p[1]), .cout(carry_adders_1[0]));
   full_adder fa1 (.a(pp1_1), .b(pp2_0), .cin(carry_adders_1[0]), .sum(sum_adders_1[0]), .cout(carry_adders_1[1]));

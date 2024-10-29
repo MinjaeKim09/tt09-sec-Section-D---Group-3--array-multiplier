@@ -52,9 +52,9 @@ async def test_project(dut):
     assert dut.uo_out.value == 0
 
     # Fifth test case
-    dut.ui_in.value = 0b01010101
+    dut.ui_in.value = 0b00100010
     await ClockCycles(dut.clk, 1)
-    assert dut.uo_out.value == 25
+    assert dut.uo_out.value == 4
 
     # Sixth test case
     dut.ui_in.value = 0b10000000

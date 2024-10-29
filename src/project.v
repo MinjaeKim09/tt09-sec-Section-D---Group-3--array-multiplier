@@ -48,6 +48,8 @@ module tt_um_array_mult_structural (
 	wire pp3_2 = m[2] & q[3];
 	wire pp3_3 = m[3] & q[3];
 
+	assign p[0] = pp0_0;
+
   full_adder fa0 (.a(pp0_1), .b(pp0_0), .cin(1'b0), .sum(p[1]), .cout(carry_adders_1[0]));
   full_adder fa1 (.a(pp1_1), .b(pp2_0), .cin(carry_adders_1[0]), .sum(sum_adders_1[0]), .cout(carry_adders_1[1]));
   full_adder fa2 (.a(pp2_1), .b(pp3_0), .cin(carry_adders_1[1]), .sum(sum_adders_1[1]), .cout(carry_adders_1[2]));

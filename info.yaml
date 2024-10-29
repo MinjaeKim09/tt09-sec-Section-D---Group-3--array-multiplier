@@ -1,53 +1,44 @@
-# Tiny Tapeout project information
 project:
-  title:        "4-Bit Array Multiplier"      # Project title
-  author:       "Minjae Kim"                   # Your name
-  discord:      "Nvintel#7774"            # Your discord username, optional
-  description:  "Performs a 4-bit by 4-bit multiplication using structural Verilog"  # One line description of project
-  language:     "Verilog"                     # Language used
-  clock_hz:     0                             # Clock frequency (0 if not applicable)
-
-  # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"                                # Tile size
-
-  # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_array_mult_structural"
-
-  # List your project's source files here.
+  title:        "4-bit Array Multiplier"
+  author:       "Your Name"
+  discord:      "Your Discord Username (optional)"
+  description:  "4-bit array multiplier using structural Verilog"
+  language:     "Verilog"
+  clock_hz:     0
+  tiles:        "1x1"
+  top_module:   "tt_um_array_mult_structural"
   source_files:
     - "project.v"
 
-# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
-  # Inputs
-  ui[0]: "Multiplier Bit 0"
-  ui[1]: "Multiplier Bit 1"
-  ui[2]: "Multiplier Bit 2"
-  ui[3]: "Multiplier Bit 3"
+  # Inputs (ui_in in project.v)
+  ui[0]: "m0"         # LSB of the first 4-bit input
+  ui[1]: "m1"
+  ui[2]: "m2"
+  ui[3]: "m3"         # MSB of the first 4-bit input
   ui[4]: ""
   ui[5]: ""
   ui[6]: ""
   ui[7]: ""
 
-  # Outputs
-  uo[0]: "Product Bit 0"
-  uo[1]: "Product Bit 1"
-  uo[2]: "Product Bit 2"
-  uo[3]: "Product Bit 3"
-  uo[4]: "Product Bit 4"
-  uo[5]: "Product Bit 5"
-  uo[6]: "Product Bit 6"
-  uo[7]: "Product Bit 7"
+  # Outputs (uo_out in project.v)
+  uo[0]: "product_bit_0"
+  uo[1]: "product_bit_1"
+  uo[2]: "product_bit_2"
+  uo[3]: "product_bit_3"
+  uo[4]: "product_bit_4"
+  uo[5]: "product_bit_5"
+  uo[6]: "product_bit_6"
+  uo[7]: "product_bit_7"
 
-  # Bidirectional pins
-  uio[0]: "Multiplicand Bit 0"
-  uio[1]: "Multiplicand Bit 1"
-  uio[2]: "Multiplicand Bit 2"
-  uio[3]: "Multiplicand Bit 3"
+  # Bidirectional pins (uio_in and uio_out in project.v)
+  uio[0]: "q0"        # LSB of the second 4-bit input
+  uio[1]: "q1"
+  uio[2]: "q2"
+  uio[3]: "q3"        # MSB of the second 4-bit input
   uio[4]: ""
   uio[5]: ""
   uio[6]: ""
   uio[7]: ""
 
-# Do not change!
 yaml_version: 6

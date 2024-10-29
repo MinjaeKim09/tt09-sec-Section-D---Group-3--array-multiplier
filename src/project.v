@@ -41,35 +41,38 @@ module tt_um_array_mult_structural (
   wire pp3_2 = m[3] & q[2];
   wire pp3_3 = m[3] & q[3];
 
-  // Full adder stages and carry wires
-  wire s1_1, c1_1, s1_2, c1_2, s1_3, c1_3;
-  wire s2_2, c2_2, s2_3, c2_3;
-  wire s3_3, c3_3;
-  wire c4_4;
+  full_adder fa0 (.a(pp0_1), .b(pp0_0), .cin(1'b0), .sum(p[1]), .cout(carry_adders_1[0]));
+  full_adder fa1 (.a(pp1_1), .b(pp2_0), .cin(carry_adders_1[0]), .sum(sum_adders_1[0]), .cout(carry_adders_1[1]));
+  full_adder fa2 (.a(pp2_1), .b(pp3_0), .cin(carry_adders_1[1]), .sum(sum_adders_1[1]), .cout(carry_adders_1[2]));
+  full_adder fa3 (.a(pp3_1), .b(1'b0), .cin(carry_adders_1[2]), .sum(sum_adders_1[2]), .cout(carry_adders_1[3]));
 
-  // Summing up the partial products (in a series of adders)
-  assign uo_out[0] = pp0_0;
+  full_adder fa4 (.a(pp0_3), .b(sum_adders_1[0]), .cin(1'b0), .sum(p[2]), .cout(carry_adders_2[0]));
+  full_adder fa5 (.a(pp1_2), .b(sum_adders_1[1]), .cin(carry_adders_2[0]), .sum(sum_adders_2[0]), .cout(carry_adders_2[1]));
+  full_adder fa6 (.a(pp2_2), .b(sum_adders_1[2]), .cin(carry_adders_2[1]), .sum(sum_adders_2[1]), .cout(carry_adders_2[2]));
+  full_adder fa7 (.a(pp3_2), .b(carry_adders_1[3]), .cin(carry_adders_2[2]), .sum(sum_adders_2[2]), .cout(carry_adders_2[3]));
 
-  assign {c1_1, s1_1} = pp0_1 + pp1_0;
-  assign {c1_2, s1_2} = pp0_2 + pp1_1 + pp2_0;
-  assign {c1_3, s1_3} = pp0_3 + pp1_2 + pp2_1 + pp3_0;
+  full_adder fa8 (.a(pp0_3), .b(sum_adders_2[0]), .cin(1'b0), .sum(p[3]), .cout(carry_adders_3[0]));
+  full_adder fa9 (.a(pp1_3), .b(sum_adders_2[1]), .cin(carry_adders_3[0]), .sum(p[4]), .cout(carry_adders_3[1]));
+  full_adder fa10 (.a(pp2_3), .b(sum_adders_2[2]), .cin(carry_adders_3[1]), .sum(p[5]), .cout(carry_adders_3[2]));
+  full_adder fa11 (.a(pp3_3), .b(carry_adders_2[3]), .cin(carry_adders_3[2]), .sum(p[6]), .cout(p[7]));
 
-  assign {c2_2, s2_2} = s1_2 + pp2_1 + pp3_0;
-  assign {c2_3, s2_3} = s1_3 + pp2_2 + pp3_1;
-
-  assign {c3_3, s3_3} = s2_3 + pp2_3 + pp3_2;
-
-  assign uo_out[1] = s1_1;
-  assign uo_out[2] = s1_2;
-  assign uo_out[3] = s1_3;
-  assign uo_out[4] = s2_2;
-  assign uo_out[5] = s2_3;
-  assign uo_out[6] = s3_3;
-  assign uo_out[7] = c4_4;
-
-  // Assign other outputs and unused signals
+  assign uo_out = p;
   assign uio_out = 0;
-  assign uio_oe = 0;
-    wire _unused = &{ena, clk, rst_n, uio_in, 1'b0};
+  assign uio_oe  = 0;
 
+  // List all unused inputs to prevent warnings
+  wire _unused = &{ena, clk, rst_n, uio_in, 1'b0};
+
+endmodule
+
+module full_adder (
+	input wire a,
+	input wire b,
+	input wire cin,
+	output wire sum,
+	output wire cout
+);
+
+	assign sum = a ^ b ^ cin;
+	assign cout = (a & b) | (a & cin) | (b & cin);
 endmodule

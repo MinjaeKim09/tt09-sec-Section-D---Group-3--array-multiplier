@@ -70,6 +70,6 @@ module tt_um_array_mult_structural (
   // Assign other outputs and unused signals
   assign uio_out = 0;
   assign uio_oe = 0;
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+    wire _unused = &{ena, clk, rst_n, uio_in, 1'b0};
 
 endmodule

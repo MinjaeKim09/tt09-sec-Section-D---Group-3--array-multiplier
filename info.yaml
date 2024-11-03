@@ -1,6 +1,6 @@
 project:
   title:        "4-bit Array Multiplier"
-  author:       "Your Name"
+  author:       "Minjae Kim, Jiawei Ding"
   discord:      "Your Discord Username (optional)"
   description:  "4-bit array multiplier using structural Verilog"
   language:     "Verilog"

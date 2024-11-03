@@ -29,3 +29,7 @@ Testing can be performed on a simulation platform (such as Verilog testbenches i
 ## External hardware
 
 This project does not require any external hardware. All inputs and outputs are managed internally within the module, which can be tested in simulation environments or FPGA-based hardware setups.
+
+## Circuit Diagram
+
+![Circuit Diagram](./circuit_diagram.png)
